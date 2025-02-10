@@ -1,34 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Phoneword;
+﻿using System.Text;
 
 namespace Phoneword
 {
     public static class De_cipher
     {
         public static string? ToNumber(string _phn, Button dialButton) 
-        { 
-            if (!string.IsNullOrEmpty(_phn)) 
+        {
+            try
             {
-                string numbers = "0123456789";
-                var numToCall = new StringBuilder();
-                foreach(var num in _phn.Split())
+                if (!string.IsNullOrEmpty(_phn))
                 {
-                    if(numbers.Contains(num))
+                    string numbers = "0123456789";
+                    var numToCall = new StringBuilder();
+                    int count = 0;
+                    foreach (var num in _phn)
                     {
-                        numToCall.Append(num);
+                        if (numbers.Contains(num))
+                        {
+                            numToCall.Append(num);
+                        }
+                        else
+                        {
+                            string[] digits = { "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ" };
+                            while(numToCall.Length<=10)
+                            {
+                                count %= 8;
+                                var item = digits[count];
+                                if (item.Contains(num))
+                                {
+                                    numToCall.Append(count+2);
+                                    break;
+                                }
+                                ++count;
+                            }
+                        }
                     }
-                    else
-                    {
-                        string[] digits = { "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ" };
-                    }
+                    _phn = numToCall.ToString();
                 }
+                else
+                    return null;
+            } catch(Exception ex) 
+            {
+                throw new Exception("An error encounterd"+ex.Message);
             }
-            else
-                return null;
+            dialButton.IsEnabled = true;
             return _phn;
         }
     }

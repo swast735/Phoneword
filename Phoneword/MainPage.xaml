@@ -8,7 +8,7 @@
             Padding="30,0"
             Spacing="25">
             <Image
-                Source="pngwing.com.png"
+                Source="pngwing_com.png"
                 HeightRequest="185"
                 Aspect="AspectFit"
                 SemanticProperties.Description="Calling icon" />
@@ -19,15 +19,14 @@
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Entry
-                x:Name="Phone text"
+                x:Name="ph_no"
                 Text=""
                 SemanticProperties.Hint="Enter tyhe ciphered pnone number" />
 
             <Button
                 x:Name="Dialer"
                 Text="Call"
-                Clicked="OnCall"
-                IsEnabled="False"/>
+                Clicked="OnCall"/>
         </VerticalStackLayout>
     </ScrollView>
 

@@ -26,7 +26,7 @@ namespace Phoneword
                             {
                                 count %= 8;
                                 var item = digits[count];
-                                if (item.Contains(num) || (item.ToLower()).Contains(num))
+                                if (item.Contains(num))
                                 {
                                     numToCall.Append(count+2);
                                     break;

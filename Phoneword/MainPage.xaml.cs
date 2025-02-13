@@ -1,8 +1,9 @@
-﻿namespace Phoneword
+﻿
+namespace Phoneword
 {
     public partial class MainPage : ContentPage
     {
-
+        public const double fs = 20;
         public MainPage()
         {
             InitializeComponent();
@@ -27,6 +28,16 @@
                     throw new Exception(ex.Message);
                 }
             }
+        }
+    }
+
+    [ContentProperty("Member")]
+    public class StaticExtension : IMarkupExtension
+    {
+        private object? Member { get; set; }
+        public object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return MainPage.fs;
         }
     }
 

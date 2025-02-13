@@ -27,7 +27,7 @@
             <Button
                 x:Name="Dialer"
                 Text="Call"
-                FontSize="{mycode:GlobalFontSize }"
+                FontSize="{x:Static Member = mycode:MainPage.fs}"
                 Clicked="OnCall"/>
         </VerticalStackLayout>
     </ScrollView>
